@@ -51,21 +51,23 @@ class Лаба1 {
         System.out.println("Сумма цифр по периметру = " + p);
 
         //доска шахматная
-        System.out.println("Шахматная доска:");
-        String[][] chessBoard = new String[8][8];
-        int n = 1;
-        for (int l = 0; l < chessBoard.length; l++) {
-            for (int m = 0; m < chessBoard[0].length; m++) {
-                if ((l + m) % 2 == 0) chessBoard[l][m] = "X";
-                else chessBoard[l][m] = "Y";
-                System.out.print(" " + chessBoard[l][m] + " ");
-                n++;
+        System.out.println("Доска шахматная:");
+        String[][] chessBoard = new String[10][10];
+        for (int i = 0; i < chessBoard.length; i++) {
+            for (int j = 0; j < chessBoard[0].length; j++) {
+                if ((i + j) % 2 == 0 && j != 0 && i != 0 && j!= 9 && i != 9) chessBoard[i][j] = "X";
+                else if (j != 0 && i != 0 && j!= 9 && i != 9) chessBoard[i][j] = "Y";
+                else if (j == 0 || i == 0 || j == 9 || i == 9) chessBoard[i][j] = chessBoardCoord(i,j);
+                System.out.print(" " + chessBoard[i][j] + " ");
             }
             System.out.println();
         }
-        }
-        public static String chess(int a, int b){
-            return new String();
-
-        }
+    }
+    public static String chessBoardCoord(int a, int b) {
+        String letters = "'ABCDEFGH'";
+        String numbers = "'87654321'";
+        if (b==0 || b == 9)  return (Character.toString(numbers.charAt(a))); /*charAt - метод, с помощью которого мы извлекаем из строки элемент под переданным номером, здесь - под номерами a и b. Character.toString - метод, который переводит полученный символ в строку*/
+        else if (a==0 || a==9)  return (Character.toString(letters.charAt(b)));
+        return "";
+    }
     }
